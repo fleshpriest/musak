@@ -16,7 +16,7 @@ for i in range(len(urlList)):
         if errorCode:
             downloadErrors.append(f'{info['title']} {info['uploader']}')
 
-print('\nFinished downloads')
+print(f'\nFinished {len(urlList) - len(downloadErrors)} of {len(urlList)} downloads')
 
 if downloadErrors:
     from os.path import realpath

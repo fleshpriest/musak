@@ -9,14 +9,17 @@ dataDir = 'data'
 if not exists(dataDir):
     mkdir(dataDir)
 
+# output for list of playlist videos
 fileAllEntries = normpath(f'{dataDir}/allEntries')
 if exists(fileAllEntries):
     remove(fileAllEntries) # Start with a blank slate to avoid having to clean up the file with subsequent runs
 
+# archive of previously downloaded videos
 filePrevDownloads = normpath(f'{dataDir}/previousDownloads')
 if not exists(filePrevDownloads):
     Path(filePrevDownloads).touch()
 
+# download errors of previous run recorded here
 errorLog = normpath(f'{dataDir}/errorLog')
 
 # check for deno installation

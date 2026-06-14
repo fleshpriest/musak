@@ -1,4 +1,7 @@
 from yt_dlp import YoutubeDL
+from subprocess import run
+
+from envCHANGME import useNotification
 from playlistOperations import prepareDownloads
 from config import errorLog, ydl_opts
 
@@ -16,7 +19,13 @@ for i in range(len(urlList)):
         if errorCode:
             downloadErrors.append(f'{info['title']} {info['uploader']}')
 
-print(f'\nFinished {len(urlList) - len(downloadErrors)} of {len(urlList)} downloads')
+finishedMsg = f'{len(urlList) - len(downloadErrors)} of {len(urlList)} songs downloaded'
+if downloadErrors:
+    finishedMsg += '\nSee logs for failed downloads'
+
+print(finishedMsg)
+if useNotification:
+    run(['notify-send', '--app-name=Musak', "Musak Finished", finishedMsg])
 
 if downloadErrors:
     from os.path import realpath

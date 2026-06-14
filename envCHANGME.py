@@ -16,3 +16,7 @@ browser = 'firefox'
 # Preferred audio file format
 # Options: aac, alac, flac, m4a, mp3, opus, vorbis, wav
 codec = 'flac'
+
+# Notifications currently only supported for linux using notify-send
+# Sends desktop notification for errors downloading videos & on script completion
+useNotification = False

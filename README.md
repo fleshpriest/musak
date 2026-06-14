@@ -9,8 +9,5 @@ Musak downloads music from YouTube playlists using yt-dlp.
 
 ### Why Musak
 - Handles multiple playlists
-- Shorter subsequent run times for large playlists.
-  - Filters out previous downloads before instructing yt-dlp to download
-
-### Planned Features
-[] - Optional notifications using notify-send
+- Shorter subsequent run times for large playlists (when compared to yt-dlp alone)
+- Logs failed file downloads

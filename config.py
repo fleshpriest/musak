@@ -1,3 +1,4 @@
+from subprocess import DEVNULL, run
 from os.path import normpath, exists
 from os import mkdir, remove
 from pathlib import Path
@@ -18,11 +19,12 @@ if not exists(filePrevDownloads):
 
 errorLog = normpath(f'{dataDir}/errorLog')
 
-# Check for deno
-if not exists('/usr/bin/deno'):
-    print('ERROR: dir /usr/bin/deno not found. Please install deno')
+# check for deno installation
+try:
+    run(['deno', '--version'], stdout=DEVNULL) # suppresses output to console
+except FileNotFoundError:
+    print('ERROR:\nDeno installation not found, please install deno\nhttps://deno.com/')
     quit(1)
-
 
 class MyLogger:
     def debug(self, msg):
